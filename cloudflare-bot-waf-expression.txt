@@ -1,0 +1,21 @@
+(
+ (http.host in {"www.ryanhopkins.dev" "ryanhopkins.dev"})
+  and (
+   starts_with(http.request.uri.path, "//") or
+   starts_with(http.request.uri.path, "/.git") or
+   ends_with(http.request.uri.path, "/graphql") or
+   ends_with(http.request.uri.path, "/swagger.json") or
+   ends_with(http.request.uri.path, "/setup-config.php") or
+   ends_with(http.request.uri.path, "/wp-login.php") or
+   ends_with(http.request.uri.path, "/wlwmanifest.xml") or
+   ends_with(http.request.uri.path, "/xmlrpc.php") or
+   ends_with(http.request.uri.path, "/config.json") or
+   ends_with(http.request.uri.path, "/.env") or
+   ends_with(http.request.uri.path, ".zip") or
+   ends_with(http.request.uri.path, ".tar") or
+   ends_with(http.request.uri.path, ".gz") or
+   ends_with(http.request.uri.path, ".sql") or
+   http.user_agent eq ""
+  )
+)
+and not cf.client.bot
