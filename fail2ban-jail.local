@@ -1,0 +1,25 @@
+[cf-challenge-badbots]
+enabled  = true
+port     = http,https
+filter   = apache-custom-badbots
+usedns   = no
+backend  = auto
+logpath  = /var/log/apache2/access.log
+maxlines = 1
+maxretry = 3
+findtime = 10m
+bantime  = 7d
+action   = cloudflare-challenge
+
+[cf-challenge-404-burst]
+enabled   = true
+port      = http,https
+filter    = apache-404-burst
+usedns    = no
+backend   = auto
+logpath   = /var/log/apache2/access.log
+maxlines  = 1
+maxretry  = 10
+findtime  = 2m
+bantime   = 7d
+action    = cloudflare-challenge
